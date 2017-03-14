@@ -15,7 +15,7 @@ Role Variables
 
 See defaults/main.yml for the variables you can overwrite via role call as a parameter.
 
-* mariadb_root_password: <THIS MUST BE GIVEN>
+* mariadb_root_password: THIS_MUST_BE_SET
 * mariadb_state: latest
 
 Dependencies
