@@ -1,0 +1,33 @@
+---
+- name: MariaDB | Initialize
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_os_family }}.yml"
+    - "default.yml"
+  when: __mariadb_packages is not defined or mariadb_service_name is not defined
+
+- name: MariaDB | Define | Packages
+  set_fact:
+    mariadb_packages: "{{ __mariadb_packages | list }}"
+  when: mariadb_packages is not defined
+
+- name: MariaDB | Install
+  package: name={{ item }} state={{ mariadb_state }}
+  with_items: "{{ mariadb_packages }}"
+
+- name: MariaDB | Enable | service
+  service:
+    name: "{{ mariadb_service_name }}"
+    state: started
+    enabled: yes
+
+- name: MariaDB | Configure
+  template: src=ansible.cnf.j2 dest={{ mariadb_server_config_dir }}/ansible.cnf
+            owner=root group=root mode=0644 backup=yes
+
+- name: MariaDB | Check | Previous
+  stat: path={{ mariadb_client_config }}
+  register: cfg
+
+- include: initial_config.yml
+  when: cfg.stat.exists is defined and cfg.stat.exists == false

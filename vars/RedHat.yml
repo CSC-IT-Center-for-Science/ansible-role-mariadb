@@ -1,0 +1,9 @@
+---
+__mariadb_packages:
+  - mariadb-server
+  - mariadb
+
+mariadb_server_config_dir: "/etc/my.cnf.d"
+
+mariadb_service_name: mariadb
+

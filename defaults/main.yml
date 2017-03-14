@@ -1,0 +1,11 @@
+---
+# latest / installed (installed -> if mariadb wont be updated if it's already installed)
+mariadb_state: latest
+
+mariadb_root_password: not_set_yet
+
+mariadb_client_config: "/root/.my.cnf"
+mariadb_remote_root_access: false
+mariadb_innodb_use_barracuda: true
+mariadb_character_set: "utf8"
+mariadb_collation: "utf8_general_ci"
