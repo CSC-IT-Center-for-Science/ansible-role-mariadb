@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/CSC-IT-Center-for-Science/ansible-role-mariadb.svg?branch=master)](https://travis-ci.org/CSC-IT-Center-for-Science/ansible-role-mariadb)
+[![Build Status](https://travis-ci.org/CSCfi/ansible-role-mariadb.svg?branch=master)](https://travis-ci.org/CSCfi/ansible-role-mariadb)
 
 Ansible-Role: MariaDB
 =========
@@ -26,6 +26,6 @@ None
 Example Playbook
 ----------------
 
-    - hosts: localhost
+    - hosts: all
       roles:
-        - { role: CSC-IT-Center-for-Science.mariadb, mariadb_root_password: testpass }
+        - { role: CSCfi.mariadb, mariadb_root_password: testpass }
