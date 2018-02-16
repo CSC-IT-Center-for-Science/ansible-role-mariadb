@@ -29,5 +29,5 @@
   stat: path={{ mariadb_client_config }}
   register: cfg
 
-- include: initial_config.yml
+- include_tasks: initial_config.yml
   when: cfg.stat.exists is defined and cfg.stat.exists == false
